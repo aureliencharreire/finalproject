@@ -1,0 +1,1 @@
+json.extract! @program, :id, :region, :departement, :city, :adress, :delivery, :bref, :strongpoints, :citydesc, :areadesc, :proximity, :tva, :immediatDelivery, :new, :pricedisplay, :created_at, :updated_at

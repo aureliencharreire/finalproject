@@ -1,0 +1,40 @@
+
+
+<div class="row">
+    <div class="col-sm-4">
+        <%= form_tag(controller: "newsletters", action: "create", method: "post") do %>
+        <h1>Newsletter</h1>
+        <div class="form-group">
+            <%= text_field_tag 'newsletter[email]', "Email", class:"form-control" %>
+            <%= submit_tag "Souscrire", class:"bloc-button"  %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <%= form_tag(controller: "callbacks", action: "create", method: "post") do %>
+        <h1>Etre rappelé</h1>
+        <div class="form-group">
+            <%= text_field_tag 'callback[civilite]', "Civilite", class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= text_field_tag 'callback[nom]', "Nom", class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= text_field_tag 'callback[prenom]', "Prenom", class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= text_field_tag 'callback[phone]', "Phone", class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= text_field_tag 'callback[email]', "Email", class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= time_field_tag 'callback[time]', "Heure", class:"form-control" %>
+        </div>
+        <%= submit_tag "Être rappelé", class:"bloc-button"  %>
+        <% end %>
+    </div>
+</div>

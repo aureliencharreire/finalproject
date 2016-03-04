@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Listing Users</h1>
+    <br>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @users.each do |user| %>
+                <tr>
+                    <td><%= user.email %></td>
+                    <td><%= link_to 'Edit User profile', edit_user_path(user.id) %></td>
+                </tr>
+                <% end %>
+            </div>
+        </tbody>
+    </table>
+</div>

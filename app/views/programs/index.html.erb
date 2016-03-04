@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Programs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Region</th>
+      <th>Departement</th>
+      <th>City</th>
+      <th>Adress</th>
+      <th>Delivery</th>
+      <th>Bref</th>
+      <th>Strongpoints</th>
+      <th>Citydesc</th>
+      <th>Areadesc</th>
+      <th>Proximity</th>
+      <th>Tva</th>
+      <th>Immediatdelivery</th>
+      <th>New</th>
+      <th>Pricedisplay</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programs.each do |program| %>
+      <tr>
+        <td><%= program.region.name %></td>
+        <td><%= program.department.name %></td>
+        <td><%= program.name %></td>
+        <td><%= program.city %></td>
+        <td><%= program.adress %></td>
+        <td><%= program.delivery %></td>
+        <td><%= program.bref %></td>
+        <td><%= program.strongpoints %></td>
+        <td><%= program.citydesc %></td>
+        <td><%= program.areadesc %></td>
+        <td><%= program.proximity %></td>
+        <td><%= program.tva %></td>
+        <td><%= program.immediatDelivery %></td>
+        <td><%= program.new %></td>
+        <td><%= program.pricedisplay %></td>
+        <td><%= link_to 'Show', program %></td>
+        <% if user_signed_in? %>
+        <td><%= link_to 'Edit', edit_program_path(program) %></td>
+        <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Program', new_program_path %>

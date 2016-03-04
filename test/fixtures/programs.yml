@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  region: MyString
+  departement: 1
+  city: MyString
+  adress: MyString
+  delivery: 2016-03-01
+  bref: MyText
+  strongpoints: MyText
+  citydesc: MyText
+  areadesc: MyText
+  proximity: MyText
+  tva: 1.5
+  immediatDelivery: false
+  new: false
+  pricedisplay: MyString
+
+two:
+  region: MyString
+  departement: 1
+  city: MyString
+  adress: MyString
+  delivery: 2016-03-01
+  bref: MyText
+  strongpoints: MyText
+  citydesc: MyText
+  areadesc: MyText
+  proximity: MyText
+  tva: 1.5
+  immediatDelivery: false
+  new: false
+  pricedisplay: MyString

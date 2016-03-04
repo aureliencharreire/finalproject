@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Callbacks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Civilite</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @callbacks.each do |callback| %>
+      <tr>
+        <td><%= callback.civilite %></td>
+        <td><%= callback.nom %></td>
+        <td><%= callback.prenom %></td>
+        <td><%= callback.phone %></td>
+        <td><%= callback.email %></td>
+        <td><%= callback.time %></td>
+        <td><%= link_to 'Show', callback %></td>
+        <td><%= link_to 'Edit', edit_callback_path(callback) %></td>
+        <td><%= link_to 'Destroy', callback, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Callback', new_callback_path %>

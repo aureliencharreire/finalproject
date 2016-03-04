@@ -1,0 +1,41 @@
+<%= form_for(@callback) do |f| %>
+  <% if @callback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@callback.errors.count, "error") %> prohibited this callback from being saved:</h2>
+
+      <ul>
+      <% @callback.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :civilite %><br>
+    <%= f.text_field :civilite %>
+  </div>
+  <div class="field">
+    <%= f.label :nom %><br>
+    <%= f.text_field :nom %>
+  </div>
+  <div class="field">
+    <%= f.label :prenom %><br>
+    <%= f.text_field :prenom %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.number_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.time_select :time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

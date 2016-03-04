@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="row">
+<h2>Vous recherchez ? </h2> <br>
+<%= form_for(@program) do |f| %>
+  <% if @program.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
+
+      <ul>
+      <% @program.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :region %><br>
+    <%= f.collection_select :region_id, Region.order(:name), :id, :name, class:"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :department %><br>
+    <%= f.collection_select :department_id, Department.order(:name), :id, :name, class:"form-control" %>
+  </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
+
+
+
+
+<h1>Listing Program Clients</h1>
+<table>
+  <tbody>
+    <% @programs.each do |program| %>
+    <div class="row">
+
+    </div>
+      <ul>
+        <li><%= program.region.name %></li>
+        <li><%= program.department.name %></li>
+        <li><%= program.name %></li>
+        <li><%= program.city %></li>
+        <li><%= program.adress %></li>
+        <li><%= program.delivery %></li>
+        <li><%= program.tva %></li>
+        <li><%= link_to 'Show', program_details_path(program) %></li>
+    </ul>
+  </div>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

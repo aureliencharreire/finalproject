@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  type: 
+  typo: MyString
+  surface: 1.5
+  parking: 1
+  cave: 1
+
+two:
+  number: MyString
+  type: 
+  typo: MyString
+  surface: 1.5
+  parking: 1
+  cave: 1
