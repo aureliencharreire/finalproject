@@ -1,59 +1,73 @@
-<p id="notice"><%= notice %></p>
 
-
-<div class="row">
-<h2>Vous recherchez ? </h2> <br>
-<%= form_for(@program) do |f| %>
-  <% if @program.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
-
-      <ul>
-      <% @program.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="bloc bgc-isabelline l-bloc" id="bloc-2">
+<div class="container bloc-sm">
+    <div class="row">
+    <div class="col-sm-12">
+        <%= form_tag({controller: "searches", action: "create", method: "post"}, {class: "form-inline"}) do %>
+          <div class="form-group">
+            <%= collection_select :department, :department, Department.order(:name), :id, :name, include_blank: 'departement', class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= text_field_tag 'search[city]', "Ville", class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= number_field_tag 'search[price]', "Price", class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= select_tag :typo, options_for_select(['Studio', '2 pièces', '3 pièces', '4 pièces', '5 pièces', '6 pièces et plus']), class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag "rechercher", class:"bloc-button btn   btn-block btn-sq btn-white"  %>
+          </div>
+        <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :region %><br>
-    <%= f.collection_select :region_id, Region.order(:name), :id, :name, class:"form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :department %><br>
-    <%= f.collection_select :department_id, Department.order(:name), :id, :name, class:"form-control" %>
-  </div>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    </div>
+</div>
 </div>
 
 
-
-
-<h1>Listing Program Clients</h1>
-<table>
-  <tbody>
-    <% @programs.each do |program| %>
-    <div class="row">
-
+<div class="row">
+    <div class="col-sm-4">
+        <%= form_tag(controller: "newsletters", action: "create", method: "post") do %>
+        <h1>Newsletter</h1>
+        <div class="form-group">
+            <%= text_field_tag 'newsletter[email]', "Email", class:"form-control" %>
+        </div>
+            <%= submit_tag "Souscrire", class:"bloc-button"  %>
+        <% end %>
     </div>
-      <ul>
-        <li><%= program.region.name %></li>
-        <li><%= program.department.name %></li>
-        <li><%= program.name %></li>
-        <li><%= program.city %></li>
-        <li><%= program.adress %></li>
-        <li><%= program.delivery %></li>
-        <li><%= program.tva %></li>
-        <li><%= link_to 'Show', program_details_path(program) %></li>
-    </ul>
-  </div>
-    <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
+<div class="row">
+    <div class="col-sm-4" >
+        <% f = form_tag(controller: "callbacks", action: "create", method: "post") do %>
+        <h1>Etre rappelé</h1>
+        <div class="form-group">
+            <%= select_tag 'callback[civilite]', options_for_select(['Monsieur', 'Madame']), class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= text_field_tag 'callback[nom]', "Nom", class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= text_field_tag 'callback[prenom]', "Prenom", class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= number_field_tag 'callback[phone]', "Phone", class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= text_field_tag 'callback[email]', "Email", class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= time_field_tag 'callback[time]', "Heure", class:"form-control" %>
+        </div>
+        <%= submit_tag "Être rappelé", class:"bloc-button"  %>
+        <% end %>
+    </div>
+</div>
+
+<%= content_tag :a, "Être rappelé", href: "#modal", class: 'btn', data: {toggle: 'modal'} %>
+
+<%= modal_dialog id: "modal",
+         header: { show_close: true, dismiss: 'modal' },
+         body:   { content: f },
+         footer: { content: content_tag(:button, 'Save', class: 'btn') } %>

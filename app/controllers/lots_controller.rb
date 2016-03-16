@@ -46,7 +46,7 @@ class LotsController < ApplicationController
 
     respond_to do |format|
       if @lot.save
-        format.html { redirect_to @lot, notice: 'Lot was successfully created.' }
+        format.html { redirect_to @program, notice: 'Lot was successfully created.' }
         format.json { render :show, status: :created, location: @lot }
       else
         format.html { render :new }
@@ -92,6 +92,6 @@ class LotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lot_params
-      params.require(:lot).permit(:number, :genre, :typo, :surface, :parking, :cave, :program_id)
+      params.require(:lot).permit(:number, :genre, :typo, :surface, :parking, :cave, :program_id, :price)
     end
 end

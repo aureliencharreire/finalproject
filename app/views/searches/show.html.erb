@@ -1,0 +1,134 @@
+<!-- Carroussel -->
+
+<div class="bloc l-bloc bgc-white" id="bloc-1">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="carousel-1" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-1" data-slide-to="0" class="active">
+						</li>
+						<li data-target="#carousel-1" data-slide-to="1">
+						</li>
+						<li data-target="#carousel-1" data-slide-to="2">
+						</li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="item active">
+							<img src="img/pers4.jpg" />
+							<div class="carousel-caption">
+							</div>
+						</div>
+						<div class="item">
+							<img src="img/placeholder-image-wide.png" />
+							<div class="carousel-caption">
+							</div>
+						</div>
+						<div class="item">
+							<img src="img/placeholder-image-wide.png" />
+							<div class="carousel-caption">
+							</div>
+						</div>
+					</div><a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev">
+                        <span class="fa fa-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-1" role="button" data-slide="next">
+                            <span class="fa fa-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Carroussel -->
+
+<!-- Search bar -->
+
+<div class="bloc bgc-isabelline l-bloc" id="bloc-2">
+    <div class="container bloc-sm">
+        <div class="row">
+            <div class="col-sm-12">
+                <%= form_tag({controller: "searches", action: "create", method: "post"}, {class: "form-inline"}) do %>
+                <div class="form-group">
+                    <%= collection_select :department, :department, Department.order(:name), :id, :name, include_blank: 'departement', class:"form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= text_field_tag 'search[city]', "Ville", class:"form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= number_field_tag 'search[price]', "Price", class:"form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= select_tag :typo, options_for_select(['Studio', '2 pièces', '3 pièces', '4 pièces', '5 pièces', '6 pièces et plus']), class:"form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= submit_tag "rechercher", class:"bloc-button btn   btn-block btn-sq btn-white"  %>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search bar END -->
+
+<!-- Affichage des programmes  -->
+<div class="bloc l-bloc bgc-white" id="bloc-26">
+    <div class="container bloc-sm">
+        <div class="row">
+            <% @search.programs.each do |program| %>
+            <div class="col-sm-4">
+                <%= image_tag program.images.first.image.thumb.url class:"img-responsive center-block" %>
+
+                <img src="img/Capture%20d&rsquo;écran%202016-03-10%20à%2017.11.36.png" class="img-responsive center-block" />
+                <h4 class=" mg-sm text-left">
+                    <strong><%= program.name %></strong><%= program.city %> ( <%= program.department.code %>)
+                </h4>
+                <h6 class=" mg-sm text-left">
+                    <strong>LOTS DISPONIBLE</strong>Du studio au 5 pièces<br />de XXm2 à XXm2<br />
+                </h6>
+                <h3 class="mg-md text-center">
+                    à partir de <strong><%= program.lots.pluck(:price).min %></strong>
+                </h3>
+                <div class="text-center">
+                    <%= link_to 'Voir le programme ', program, class: "btn  btn-sq btn-maroon-x11 btn-sm" %>
+
+                    <a href="index.html" class="btn  btn-sq btn-maroon-x11 btn-sm">TETS</a>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<!-- FIN Affichage des programmes  -->
+
+
+<!--
+<% @search.programs.each do |program| %>
+  <tr>
+    <td><%= program.region.name %></td>
+    <td><%= program.department.name %></td>
+    <td></td>
+    <td></td>
+    <td><%= program.adress %></td>
+    <td><%= program.delivery %></td>
+    <td><%= program.bref %></td>
+    <td><%= program.strongpoints %></td>
+    <td><%= program.citydesc %></td>
+    <td><%= program.areadesc %></td>
+    <td><%= program.proximity %></td>
+    <td><%= program.tva %></td>
+    <td><%= program.immediatDelivery %></td>
+    <td><%= program.new %></td>
+    <td><%= program.pricedisplay %></td>
+    <td><%= link_to 'Show', program %></td>
+    <% if user_signed_in? %>
+    <td><%= link_to 'Edit', edit_program_path(program) %></td>
+    <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+<% end %>
+
+Search bar END -->

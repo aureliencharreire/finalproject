@@ -13,6 +13,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1.json
   def show
       @lots = Lot.where(program_id: @program.id).order("created_at DESC")
+      @images = Image.where(program_id: @program.id).order("created_at DESC")
   end
 
   # GET /programs/new

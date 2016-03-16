@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit]
-    before_action :authenticate_user!, except: [:show, :index]
+    before_action :authenticate_user!
     before_action :UserAccept, only: [:edit,:update, :destroy]
-    
+
     def index
         @users = User.all
     end

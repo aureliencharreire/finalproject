@@ -17,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :genre %><br>
-    <%= f.text_field :genre %>
+    <%= f.select :genre, [ 'Appartement', 'Maison' ] %>
   </div>
   <div class="field">
     <%= f.label :typo %><br>
-    <%= f.text_field :typo %>
+    <%= f.select :typo, [ 'Studio', '2 pièces', '3 pièces', '4 pièces', '5 pièces', '6 pièces et plus' ] %>
   </div>
   <div class="field">
     <%= f.label :surface %><br>
@@ -34,6 +34,10 @@
   <div class="field">
     <%= f.label :cave %><br>
     <%= f.number_field :cave %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
   </div>
   <div class="actions">
     <%= f.submit %>

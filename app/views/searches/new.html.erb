@@ -1,0 +1,24 @@
+<h1>advanced search</h1>
+
+<%= form_for(@search) do |f| %>
+  <div class="field">
+    <%= f.label :department %><br>
+    <%= f.collection_select :department, Department.order(:name), :id, :name,
+    include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :typo %><br>
+    <%= f.select :typo, [ 'Studio', '2 pièces', '3 pièces', '4 pièces', '5 pièces', '6 pièces et plus' ] %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

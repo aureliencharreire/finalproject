@@ -2,12 +2,32 @@
 <html>
 <head>
   <title>Expansiel</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <meta charset="utf-8">
   <%= csrf_meta_tags %>
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
+
+  <!-- CSS -->
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= stylesheet_link_tag "bootstrap" %>
+      <%= stylesheet_link_tag "font-awesome.min" %>
+      <%= stylesheet_link_tag "et-line.min" %>
+      <%= stylesheet_link_tag "font-awesome.min" %>
+      <%= stylesheet_link_tag "style" %>
+      <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+  <!-- JS -->
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+      <%= javascript_include_tag "bootstrap" %>
+      <%= javascript_include_tag "blocs" %>
+      <%= javascript_include_tag "jqBootstrapValidation" %>
+      <%= javascript_include_tag "formHandler" %>
+
 </head>
 <body>
+
+  <!-- MENU  -->
 
 <% if user_signed_in? %>
 <nav class="navbar navbar-default">
@@ -17,28 +37,94 @@
             <li><%= link_to "Administration programmes", programs_path, :class => 'navbar-link' %></li>
             <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+            <% if current_user.admin?  %>
+            <li><%= link_to 'Utilisateurs', users_path %></li>
+            <% end %>
         </ul>
     </div>
 </div>
 </nav>
 <% end %>
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <ul class="nav navbar-nav">
-            <li><%= link_to "Home", root_path, :class => 'navbar-link' %></li>
-            <li><%= link_to 'Nous contacter', new_contact_path, :class => 'navbar-link' %></li>
-            <li><%= link_to "Nos programmes", programs_client_path, :class => 'navbar-link' %></li>
-            <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %></li>
-            <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></li>
-        </ul>
-    </div>
-</div>
-</nav>
 
-<div class="container">
+
+<!-- Navigation Bloc -->
+<div class="bloc l-bloc bgc-white" id="nav-bloc">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/"><img src="img/logo2x.png" alt="logo" width="180" /></a>
+				<button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+					<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-1">
+				<ul class="site-navigation nav navbar-nav">
+					<li>
+						<a href="#">Qui sommes nous ?</a>
+					</li>
+					<li>
+						<div class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Nos programmes<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<a href="index.html" class="a-btn a-block">Nouveautés</a>
+								</li>
+								<li>
+									<a href="index.html" class="a-btn a-block">Avants premières</a>
+								</li>
+								<li>
+									<a href="index.html" class="a-btn a-block">Livraisons immédiates</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<%= link_to 'Nous contacter', new_contact_path, :class => 'navbar-link' %>
+					</li>
+					<li>
+						<a href="#">Parrainage</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+<!-- Navigation Bloc END -->
+
+
+
+
+
     <%= yield %>
+
+<!-- Footer -->
+
+<div class="bloc bgc-light-slate-gray d-bloc" id="bloc-27">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-6">
+						<h2 class="text-right mg-clear">
+							<strong>0800 710 810</strong>
+						</h2>
+						<p class="text-right">
+							appel gratuit depuis un poste fixe.
+						</p>
+					</div>
+					<div class="col-sm-6">
+						<a href="index.html" class="a-btn pull-left">Contactez-nous</a><a href="index.html" class="a-btn pull-left">Mentions légales</a><a href="index.html" class="a-btn pull-left">©expansiel promotion</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+<!-- Footer end -->
+
+
+
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
 
 
 </body>

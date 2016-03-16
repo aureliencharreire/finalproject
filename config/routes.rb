@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :images
   resources :regions
   resources :departments
   resources :programs do
         resources :lots, except: [:show, :index]
+        resources :images, except: [:show, :index]
     end
+  resources :searches
   resources :callbacks
   resources :newsletters
   resources :contacts

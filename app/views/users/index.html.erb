@@ -14,7 +14,9 @@
                 <% @users.each do |user| %>
                 <tr>
                     <td><%= user.email %></td>
+                    <% if current_user.admin?  %>
                     <td><%= link_to 'Edit User profile', edit_user_path(user.id) %></td>
+                    <% end %>
                 </tr>
                 <% end %>
             </div>

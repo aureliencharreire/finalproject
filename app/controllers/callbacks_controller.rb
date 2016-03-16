@@ -6,7 +6,7 @@ class CallbacksController < ApplicationController
   # GET /callbacks
   # GET /callbacks.json
   def index
-    @callbacks = Callback.all
+    @callbacks = ::Callback.all
   end
 
   # GET /callbacks/1
@@ -16,7 +16,7 @@ class CallbacksController < ApplicationController
 
   # GET /callbacks/new
   def new
-    @callback = Callback.new
+    @callback = ::Callback.new
   end
 
   # GET /callbacks/1/edit
@@ -26,7 +26,7 @@ class CallbacksController < ApplicationController
   # POST /callbacks
   # POST /callbacks.json
   def create
-    @callback = Callback.new(callback_params)
+    @callback = ::Callback.new(callback_params)
 
     respond_to do |format|
       if @callback.save
@@ -66,7 +66,7 @@ class CallbacksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_callback
-      @callback = Callback.find(params[:id])
+      @callback = ::Callback.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

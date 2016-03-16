@@ -3,6 +3,13 @@ source 'https://rubygems.org'
 
 gem 'twitter-bootstrap-rails' # Bootstrap
 gem 'devise' # Authentification system
+gem 'carrierwave' #upload images
+gem "mini_magick" #resize images
+gem "mailcatcher" #attrape les mails
+gem 'bootstrap-modal-rails' #pour les popins
+gem "less-rails"
+gem "therubyracer"
+
 
 # ============================================================================#
 

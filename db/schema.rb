@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303142710) do
+ActiveRecord::Schema.define(version: 20160309151329) do
 
   create_table "callbacks", force: :cascade do |t|
     t.string   "civilite",   limit: 255
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20160303142710) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string   "image",      limit: 255
+    t.integer  "program_id", limit: 4
+    t.boolean  "carroussel"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "lots", force: :cascade do |t|
     t.string   "number",     limit: 255
     t.string   "genre",      limit: 255
@@ -52,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160303142710) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "program_id", limit: 4
+    t.float    "price",      limit: 24
   end
 
   create_table "newsletters", force: :cascade do |t|
@@ -83,6 +92,15 @@ ActiveRecord::Schema.define(version: 20160303142710) do
   create_table "regions", force: :cascade do |t|
     t.string   "code",       limit: 255
     t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.integer  "department", limit: 4
+    t.integer  "price",      limit: 4
+    t.string   "typo",       limit: 255
+    t.string   "city",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

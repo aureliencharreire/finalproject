@@ -1,5 +1,76 @@
-<h1>Nous contacter</h1>
+<!-- Image d'entete -->
 
-<%= render 'form' %>
+<div class="page-container">
 
-<%= link_to 'Back', contacts_path %>
+<div class="bloc l-bloc bgc-white" id="bloc-9">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-12">
+				<img src="/img/contact_img.png" class="img-responsive" />
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Titre et accroche -->
+
+<div class="bloc l-bloc bgc-white" id="bloc-10">
+    <div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1 class="tc-light-slate-gray mg-lg">
+					Contactez-nous
+				</h1>
+				<h4 class="mg-lg">
+					Vous êtes intérréssé par une de nos opérations ? Merci de renseigner les champs suivants.
+				</h4>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Formulaire (sur 2 colonnes) -->
+
+<div class="bloc bgc-isabelline l-bloc" id="bloc-11">
+    <div class="container bloc-md">
+
+    <div class="row">
+        <%= form_for(@contact) do |f| %>
+        <% if @contact.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+            <ul>
+                <% @contact.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <%= f.select(:civilite, options_for_select([['Monsieur'], ['Madame']]), {}, {class: "form-control"}) %>
+            </div>
+            <div class="form-group">
+                <%= f.text_field :nom, placeholder: "Nom", class: "form-control" %>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <%= f.text_field :prenom, placeholder: "Prenom", class: "form-control" %>
+            </div>
+            <div class="form-group">
+                <%= f.text_field :email, placeholder:"Email", class: "form-control" %>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <%= f.text_area :message, class: "form-control" , rows:6, cols:50 %>
+            </div>
+            <%= f.submit "Valider", class: "bloc-button btn   pull-left btn-lg btn-sq btn-maroon-x11"  %>
+        </div>
+        <% end %>
+    </div>
+</div>
+</div>
